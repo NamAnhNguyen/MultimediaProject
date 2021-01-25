@@ -7,81 +7,19 @@
 
 using namespace cv;
 
-Mat blue(Mat origin) {
-	Mat result = origin.clone();
-
-	for (int i = 0; i < result.rows; i++)
-	{
-		for (int j = 0; j < result.cols; j++)
-		{
-			Vec3b& color = origin.at<Vec3b>(Point(j, i));
-
-			color[1] = 0;
-			color[2] = 0;
-			result.at<Vec3b>(Point(j, i)) = color;
-		}
-	}
-
-	return result;
-}
-
-Mat green(Mat origin) {
-	Mat result = origin.clone();
-
-	for (int i = 0; i < result.rows; i++)
-	{
-		for (int j = 0; j < result.cols; j++)
-		{
-			Vec3b& color = origin.at<Vec3b>(Point(j, i));
-
-			color[0] = 0;
-			color[2] = 0;
-			result.at<Vec3b>(Point(j, i)) = color;
-		}
-	}
-
-	return result;
-}
-
-Mat red(Mat origin) {
-	Mat result = origin.clone();
-
-	for (int i = 0; i < result.rows; i++)
-	{
-		for (int j = 0; j < result.cols; j++)
-		{
-			Vec3b& color = origin.at<Vec3b>(Point(j, i));
-
-			int avg = (color[0] + color[1] + color[2]) / 3;
-
-			color[0] = 0;
-			color[1] = 0;
-			result.at<Vec3b>(Point(j, i)) = color;
-		}
-	}
-
-	return result;
-}
-
-
-
 int main()
 {
-	Mat image = imread("Image/lyca2.jpg"); //BGR
-	
-	Mat gaussianBlurImage = image.clone();
+	Mat image1 = imread("Image/ruyi.jpg"); //BGR	
+	int bgr[3] = { 0,30 };
+	int colorRange[2] = { 60,180 };
+	Mat newImage = Splash(image1,colorRange);
 
-	GaussianBlur(image, gaussianBlurImage, Size(5, 5), 0);
-	addWeighted(image, 1.5, gaussianBlurImage, -0.5, 0, gaussianBlurImage);
+	cv::namedWindow("Origin1", WINDOW_NORMAL);
+	cv::imshow("Origin1", image1);
 
-	Mat newImage = Walden(gaussianBlurImage);
-
-	namedWindow("Origin", WINDOW_NORMAL);
-	imshow("Origin", image);
-
-	namedWindow("Demo", WINDOW_NORMAL);
-	imshow("Demo", newImage);
-	waitKey(0);
+	cv::namedWindow("Demo", WINDOW_NORMAL);
+	cv::imshow("Demo", newImage);
+	cv::waitKey(0);
 	return 0;
 }
 

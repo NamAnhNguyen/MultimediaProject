@@ -7,13 +7,12 @@
 using namespace cv;
 Mat _1977(Mat origin) {
 	Mat background = origin.clone();
-	int bgr[] = { 188,106,1243 };
+	int bgr[] = { 188,106,243 };
 	background = Fill(background, bgr);
 
 	Mat newImage = Blend(origin, background, 0.9);
 
-	newImage = Sepia(newImage);
-	newImage = ContrastAndBrightness(newImage, 1.4, 1);
+	newImage = ContrastAndBrightness(newImage, 0.55, 1.1);
 	return newImage;
 }
 
@@ -21,9 +20,9 @@ Mat Brannan(Mat origin) {
 	Mat background = origin.clone();
 	int bgr[] = { 199,44,161 };
 	background = Fill(background, bgr);
-	Mat newImage = Blend(origin, background, 0.9);
+	Mat newImage = Blend(origin, background, 0.75);
 	newImage = Sepia(newImage, 0.5);
-	newImage = ContrastAndBrightness(newImage, 1.4, 1);
+	newImage = ContrastAndBrightness(newImage, 0.55, 1);
 
 	return newImage;
 }
@@ -53,7 +52,7 @@ Mat Clarendon(Mat origin) {
 	background = Fill(background, bgr);
 	Mat newImage = Blend(origin, background, 0.825);
 	newImage = ContrastAndBrightness(newImage, 1.2, 1);
-	newImage = Saturate(newImage, 1.35);
+	//newImage = Saturate(newImage, 1.35);
 
 	return newImage;
 }

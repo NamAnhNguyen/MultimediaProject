@@ -75,7 +75,7 @@ Mat Splash(Mat origin, int colorRange[2]) {
 
 	bitwise_and(image, image, result, mask);
 	
-	bitwise_or(result, grayScale, result);
+	//bitwise_or(result, grayScale, result);
 
 	cvtColor(result, result, COLOR_HSV2BGR_FULL);
 	return result;
@@ -112,7 +112,7 @@ Mat Blend(Mat foreground, Mat background , double alpha) {
 	return result;
 }
 Mat HueRotate(Mat origin, int deg) {
-	Mat result = origin.clone(); \
+	Mat result = origin.clone();
 
 	float cos_hue = cos(deg * PI / 180.0);
 	float sin_hue = sin(deg * PI / 180.0);

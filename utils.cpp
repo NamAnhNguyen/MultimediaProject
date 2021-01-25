@@ -102,6 +102,6 @@ Mat Invert(Mat origin) {
 Mat Mask(Mat origin, int low, int high) {
 
 	Mat result = origin.clone();
-	inRange(result, Scalar(low,100,100), Scalar(high,255,255), result);
+	inRange(result, Scalar(low, 120, 70), Scalar(high, 255, 255), result);
 	return result;
 }
