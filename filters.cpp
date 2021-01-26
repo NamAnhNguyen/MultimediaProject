@@ -37,8 +37,8 @@ Mat Brooklyn(Mat origin) {
 	int bgr2[] = { 200, 183, 196 };
 	background2 = Fill(background2, bgr2);
 
-	Mat newImage1 = Blend(origin, background1, 0.75);
-	Mat newImage2 = Blend(origin, background2, 0.75);
+	Mat newImage1 = Blend(origin, background1, 0.9);
+	Mat newImage2 = Blend(origin, background2, 0.9);
 	Mat newImage = Add(newImage1, newImage2);
 
 	newImage = ContrastAndBrightness(newImage, 0.9, 1.1);
@@ -52,7 +52,7 @@ Mat Clarendon(Mat origin) {
 	background = Fill(background, bgr);
 	Mat newImage = Blend(origin, background, 0.825);
 	newImage = ContrastAndBrightness(newImage, 1.2, 1);
-	newImage = Saturate(newImage, 1.35);
+	newImage = Saturate(newImage, 1);
 
 	return newImage;
 }
