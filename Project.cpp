@@ -12,7 +12,7 @@ int main()
 	Mat image1 = imread("Image/ruyi.jpg"); //BGR	
 	int bgr[3] = { 0,30 };
 	int colorRange[2] = { 60,180 };
-	Mat newImage = Splash(image1,colorRange);
+	Mat newImage = _1977(image1);
 
 	cv::namedWindow("Origin1", WINDOW_NORMAL);
 	cv::imshow("Origin1", image1);

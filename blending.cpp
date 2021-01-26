@@ -90,7 +90,7 @@ Mat Sepia(Mat origin , float amount) {
 	transform(origin, result, sepia);
 	return result;
 }
-Mat Saturate(Mat origin, int amount) {
+Mat Saturate(Mat origin, float amount) {
 	Mat result = origin.clone();
 	Mat_ <float> saturate(3, 3);
 	saturate << .072 - .072 * amount , .715 - .715 * amount, .213 + .787 * amount,
@@ -99,7 +99,7 @@ Mat Saturate(Mat origin, int amount) {
 	transform(origin, result, saturate);
 	return result;
 }
-Mat ContrastAndBrightness(Mat origin, int con, int bri) {
+Mat ContrastAndBrightness(Mat origin, float con, float bri) {
 	Mat result;
 	origin.convertTo(result, con, bri);
 	return result;
@@ -119,9 +119,13 @@ Mat HueRotate(Mat origin, int deg) {
 
 
 	Mat_ <float> matrix(3, 3);
-	matrix << .072 - cos_hue * .072 + sin_hue * .928 ,.715 - cos_hue * .715 - sin_hue * .715, .213 + cos_hue * .787 - sin_hue * .213, 
+//	matrix << .072 - cos_hue * .072 + sin_hue * .928 ,.715 - cos_hue * .715 - sin_hue * .715, .213 + cos_hue * .787 - sin_hue * .213, 
+//		.072 - cos_hue * .072 - sin_hue * .283, .715 + cos_hue * .285 + sin_hue * .140, .213 - cos_hue * .213 + sin_hue * .143,
+//		.072 + cos_hue * .928 + sin_hue * .072, .715 - cos_hue * .715 + sin_hue * .715, .213 - cos_hue * .213 - sin_hue * .787;
+
+	matrix << .072 + cos_hue * .928 + sin_hue * .072, .715 - cos_hue * .715 + sin_hue * .715, .213 - cos_hue * .213 - sin_hue * .787,
 		.072 - cos_hue * .072 - sin_hue * .283, .715 + cos_hue * .285 + sin_hue * .140, .213 - cos_hue * .213 + sin_hue * .143,
-		.072 + cos_hue * .928 + sin_hue * .072, .715 - cos_hue * .715 + sin_hue * .715, .213 - cos_hue * .213 - sin_hue * .787;
+		.072 - cos_hue * .072 + sin_hue * .928, .715 - cos_hue * .715 - sin_hue * .715, .213 + cos_hue * .787 - sin_hue * .213;
 
 	transform(origin, result, matrix);
 	return result;

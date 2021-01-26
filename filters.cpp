@@ -52,7 +52,7 @@ Mat Clarendon(Mat origin) {
 	background = Fill(background, bgr);
 	Mat newImage = Blend(origin, background, 0.825);
 	newImage = ContrastAndBrightness(newImage, 1.2, 1);
-	//newImage = Saturate(newImage, 1.35);
+	newImage = Saturate(newImage, 1.35);
 
 	return newImage;
 }
